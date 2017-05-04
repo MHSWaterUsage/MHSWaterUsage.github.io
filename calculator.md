@@ -29,7 +29,7 @@ You use <span id="showerResult">--</span> gallons of water while you shower and 
 		}
 		
 		showerResult.textContent = showerGallons;
-		brushResult.textContent = showerGallons;
+		brushResult.textContent = brushGallons;
 		
 		var dailyGallons = showerGallons + brushGallons;
 		var yearlyGallons = Math.round(36.5 * dailyGallons)*0.01;
