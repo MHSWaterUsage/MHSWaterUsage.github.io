@@ -12,7 +12,7 @@ Here's a nifty tool to let you figure out how much water you use in a day:
 </form>
 <hr>
 <p>
-You use <span id="showerResult">--</span> gallons of whater while you shower and <span id="brushResult">--</span> gallons while you brush your teeth. This uses <span id="daily">--</span> gallons of water per day, or <span id="yearly">--</span> gallons per year.
+You use <span id="showerResult">--</span> gallons of water while you shower and <span id="brushResult">--</span> gallons while you brush your teeth. This uses <span id="daily">--</span> gallons of water per day, or <span id="yearly">--</span> thousand gallons per year.
 </p>
 <script>
 	var form = document.querySelector("form");
@@ -32,7 +32,7 @@ You use <span id="showerResult">--</span> gallons of whater while you shower and
 		brushResult.textContent = showerGallons;
 		
 		var dailyGallons = showerGallons + brushGallons;
-		var yearlyGallons = 365 * dailyGallons;
+		var yearlyGallons = Math.round(36.5 * dailyGallons)*0.01;
 		
 		daily.textContent = dailyGallons;
 		yearly.textContent = yearlyGallons;
