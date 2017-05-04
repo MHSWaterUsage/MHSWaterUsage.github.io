@@ -8,7 +8,7 @@ Here's a nifty tool to let you figure out how much water you use in a day:
 	<option value="y">Yes</option>
 	<option value="n">No</option>
 	</select>
-	
+	<button type="submit">Calculate!</button>
 </form>
 <script>
 	var form = document.querySelector("form");
