@@ -5,18 +5,35 @@ Here's a nifty tool to let you figure out how much water you use in a day:
 	How long do you generally shower for? <input type="number" name="shower"> Minutes<br>
 	Do you leave the water on while you brush your teeth?
 	<select name="brush">
-	<option value="do">Yes</option>
-	<option value="don't">No</option>
+	<option value=2.5>Yes</option>
+	<option value=0>No</option>
 	</select><br>
 	<button type="submit">Calculate!</button>
 </form>
 <hr>
-You use <span id="showerResult">--</span> gallons of whater while you shower.
+<p>
+You use <span id="showerResult">--</span> gallons of whater while you shower and <span id="brushResult">--</span> gallons while you brush your teeth. This uses <span id="daily">--</span> gallons of water per day, or <span id="yearly">--</span> gallons per year.
+</p>
 <script>
 	var form = document.querySelector("form");
+	
 	var showerResult = document.getElementById("showerResult");
+	var brushResult = document.getElementById("brushResult");
+	var daily = document.getElementById("daily");
+	var yearly = document.getElementById("yearly");
 	form.addEventListener("submit", function(event) {
-		showerResult.textContent = form.elements.shower.value * 2.1;
+		var showerGallons = form.elements.shower.value * 2.1;
+		var brushGallons = form.elements.brush.value;
+		
+		showerResult.textContent = showerGallons;
+		brushResult.textContent = showerGallons;
+		
+		var dailyGallons = showerGallons + brushGallons;
+		var yearlyGallons = 365 * dailyGallons;
+		
+		daily.textContent = dailyGallons;
+		yearly.textContent = yearlyGallons;
+		
 		event.preventDefault();
 	});
 </script>
