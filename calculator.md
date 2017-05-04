@@ -11,12 +11,12 @@ Here's a nifty tool to let you figure out how much water you use in a day:
 	<button type="submit">Calculate!</button>
 </form>
 <hr>
-You <span id="brushResult">do</span> leave the water on while you shower.
+You use <span id="showerResult">--</span> gallons of whater while you shower.
 <script>
 	var form = document.querySelector("form");
-	var span = document.getElementById("brushResult");
+	var showerResult = document.getElementById("showerResult");
 	form.addEventListener("submit", function(event) {
-		span.textContent = form.elements.brush.value;
+		showerResult.textContent = form.elements.shower.value * 2.1;
 		event.preventDefault();
 	});
 </script>
