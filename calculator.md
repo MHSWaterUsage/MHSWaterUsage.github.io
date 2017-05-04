@@ -7,13 +7,16 @@ Here's a nifty tool to let you figure out how much water you use in a day:
 	<select name="brush">
 	<option value="y">Yes</option>
 	<option value="n">No</option>
-	</select>
+	</select><br>
 	<button type="submit">Calculate!</button>
 </form>
+<hr>
+You <span>do</span> leave the water on while you shower.
 <script>
 	var form = document.querySelector("form");
+	var span = document.querySelector("span");
 	form.addEventListener("submit", function(event) {
-		console.log("Saving value", form.elements.brush.value);
+		span.value = form.elements.brush.value;
 		event.preventDefault();
 	});
 </script>
