@@ -5,8 +5,8 @@ Here's a nifty tool to let you figure out how much water you use in a day:
 	How long do you generally shower for? <input type="number" name="shower"> Minutes<br>
 	Do you leave the water on while you brush your teeth?
 	<select name="brush">
-	<option value=2.5>Yes</option>
-	<option value=0>No</option>
+	<option value="y">Yes</option>
+	<option value="n">No</option>
 	</select><br>
 	<button type="submit">Calculate!</button>
 </form>
@@ -23,7 +23,10 @@ You use <span id="showerResult">--</span> gallons of whater while you shower and
 	var yearly = document.getElementById("yearly");
 	form.addEventListener("submit", function(event) {
 		var showerGallons = form.elements.shower.value * 2.1;
-		var brushGallons = form.elements.brush.value;
+		var brushGallons = 0;
+		if(form.elements.brush.value == "y") {
+			brushGallons = 2.5;
+		}
 		
 		showerResult.textContent = showerGallons;
 		brushResult.textContent = showerGallons;
