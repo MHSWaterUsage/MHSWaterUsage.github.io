@@ -40,3 +40,7 @@ You use <span id="showerResult">--</span> gallons of water while you shower and 
 		event.preventDefault();
 	});
 </script>
+
+
+<hr>
+[home](index.html)
