@@ -34,6 +34,7 @@ The above calculations are for what is called domestic water use. This may seem 
 	var adjustedYearly = document.getElementById("adjustedYearly");
 	var worldsNeeded = document.getElementById(worldsNeeded");
 	form.addEventListener("submit", function(event) {
+		event.preventDefault();
 		var showerGallons = form.elements.shower.value * 2.1;
 		var brushGallons = 0;
 		if(form.elements.brush.value == "y") {
@@ -58,8 +59,6 @@ The above calculations are for what is called domestic water use. This may seem 
 		yearly.textContent = yearlyGallons;
 		adjustedYearly.textContent = yearlyAdjusted;
 		earthsNeeded.textContent = earths;
-		
-		event.preventDefault();
 	});
 </script>
 
