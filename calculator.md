@@ -52,7 +52,7 @@ The above calculations are for what is called domestic water use. This may seem 
 		var dailyGallons = showerGallons + brushGallons + flushGallons;
 		var yearlyGallons = Math.round(36.5 * dailyGallons)*0.01;
 		var yearlyAjdusted = Math.round(365 * dailyGallons)*0.01;
-		var earths = Math.round(yearlyAdjusted * 7 / 23.8) * .1;
+		var earths = Math.round(yearlyAdjusted * 7 / 23.8) * 0.1;
 		
 		daily.textContent = dailyGallons;
 		yearly.textContent = yearlyGallons;
