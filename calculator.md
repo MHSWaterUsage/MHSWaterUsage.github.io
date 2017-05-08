@@ -20,6 +20,9 @@ Here's a nifty tool to let you figure out how much water you use in a day:
 <p>
 You use <span id="showerResult">--</span> gallons of water while you shower and <span id="brushResult">--</span> gallons while you brush your teeth. You also use <span id="flushResult">--</span> gallons flushing the toilet each day. This uses <span id="daily">--</span> gallons of water per day, or <span id="yearly">--</span> thousand gallons per year.
 </p>
+<p>
+The above calculations are for what is called domestic water use. This may seem like a large number, but your actual water footprint is roughly ten times larger, or <span id="adjustedYearly">--</span> thousand gallons per year. This increase is due to the large water consumption of agriculture and industry that make the pruducts you use every day. This figure should be taken as an estimate, as many of the figures related to "invisible water" are difficult to calculate, but you can find out more [here](http://www.theworldcounts.com/stories/average-daily-water-usage). If everyone on earth used as much water as you did, we would need about <span id="worldsNeeded">--</span> earths to sustain us all.
+</p>
 <script>
 	var form = document.querySelector("form");
 	
@@ -28,6 +31,8 @@ You use <span id="showerResult">--</span> gallons of water while you shower and 
 	var flushResult = document.getElementById("flushResult");
 	var daily = document.getElementById("daily");
 	var yearly = document.getElementById("yearly");
+	var adjustedYearly = document.getElementById("adjustedYearly");
+	var worldsNeeded = document.getElementById(worldsNeeded");
 	form.addEventListener("submit", function(event) {
 		var showerGallons = form.elements.shower.value * 2.1;
 		var brushGallons = 0;
@@ -46,9 +51,13 @@ You use <span id="showerResult">--</span> gallons of water while you shower and 
 		
 		var dailyGallons = showerGallons + brushGallons + flushGallons;
 		var yearlyGallons = Math.round(36.5 * dailyGallons)*0.01;
+		var yearlyAjdusted = Math.round(365 * dailyGallons)*0.01;
+		var earths = Math.round(yearlyAdjusted * 7 / 23.8) * .1;
 		
 		daily.textContent = dailyGallons;
 		yearly.textContent = yearlyGallons;
+		adjustedYearly.textContent = yearlyAdjusted;
+		earthsNeeded.textContent = earths;
 		
 		event.preventDefault();
 	});
