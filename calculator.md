@@ -60,6 +60,9 @@ The above calculations are for what is called domestic water use. This may seem 
 		earthsNeeded.textContent = earths;
 		
 		event.preventDefault();
+		if(event.isDefaultPrevented()) {
+			earths.textContent = "default prevented";
+		}
 	});
 </script>
 
