@@ -34,7 +34,7 @@ var daily = document.getElementById("daily");
 var yearly = document.getElementById("yearly");
 var adjustedYearly = document.getElementById("adjustedYearly");
 var worldsNeeded = document.getElementById("worldsNeeded");
-function handleForm(e) {
+/*function handleForm(e) {
 	if(debug) {
 		alert("submitted!");
 	}
@@ -69,7 +69,7 @@ function handleForm(e) {
 	}
 	return false;
 }
-//form.addEventListener("submit", handleForm(event));
+form.addEventListener("submit", handleForm(event));*/
 function handleFormNoEvent {
 	if(debug) {
 		alert("submitted!");
