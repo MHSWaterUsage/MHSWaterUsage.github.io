@@ -1,7 +1,7 @@
 # Water Usage Calculator
 Here's a nifty tool to let you figure out how much water you use in a day:
 <hr>
-<form>
+<form id="calc">
 	How long do you generally shower for? <input type="number" name="shower"> Minutes<br>
 	Do you leave the water on while you brush your teeth?
 	<select name="brush">
@@ -24,44 +24,45 @@ You use <span id="showerResult">--</span> gallons of water while you shower and 
 The above calculations are for what is called domestic water use. This may seem like a large number, but your actual water footprint is roughly ten times larger, or <span id="adjustedYearly">--</span> thousand gallons per year. This increase is due to the large water consumption of agriculture and industry that make the pruducts you use every day. This figure should be taken as an estimate, as many of the figures related to "invisible water" are difficult to calculate, but you can find out more under 'Further Readings'. If everyone on earth used as much water as you did, we would need about <span id="worldsNeeded">--</span> earths to sustain us all.
 </p>
 <script>
-	var form = document.querySelector("form");
+var form = document.getElementById("calc");
+
+var showerResult = document.getElementById("showerResult");
+var brushResult = document.getElementById("brushResult");
+var flushResult = document.getElementById("flushResult");
+var daily = document.getElementById("daily");
+var yearly = document.getElementById("yearly");
+var adjustedYearly = document.getElementById("adjustedYearly");
+var worldsNeeded = document.getElementById("worldsNeeded");
+function handleForm(e) {
+	var showerGallons = form.elements.shower.value * 2.1;
+	var brushGallons = 0;
+	if(form.elements.brush.value == "y") {
+		brushGallons = 2.5;
+	}
+	var galPerFlush = 3.5;
+	if(form.elements.toiletAge.value == "y") {
+		galPerFlush = 1.6;
+	}
+	var flushGallons = galPerFlush * form.elements.flush.value;
 	
-	var showerResult = document.getElementById("showerResult");
-	var brushResult = document.getElementById("brushResult");
-	var flushResult = document.getElementById("flushResult");
-	var daily = document.getElementById("daily");
-	var yearly = document.getElementById("yearly");
-	var adjustedYearly = document.getElementById("adjustedYearly");
-	var worldsNeeded = document.getElementById("worldsNeeded");
-	form.addEventListener("submit", function(event) {
-		var showerGallons = form.elements.shower.value * 2.1;
-		var brushGallons = 0;
-		if(form.elements.brush.value == "y") {
-			brushGallons = 2.5;
-		}
-		var galPerFlush = 3.5;
-		if(form.elements.toiletAge.value == "y") {
-			galPerFlush = 1.6;
-		}
-		var flushGallons = galPerFlush * form.elements.flush.value;
-		
-		showerResult.textContent = showerGallons;
-		brushResult.textContent = brushGallons;
-		flushResult.textContent = flushGallons;
-		
-		var dailyGallons = showerGallons + brushGallons + flushGallons;
-		var yearlyGallons = Math.round(36.5 * dailyGallons)*0.01;
-		var yearlyAjdusted = Math.round(365 * dailyGallons)*0.01;
-		var earths = Math.round(yearlyAdjusted * 7 / 23.8) * 0.1;
-		
-		daily.textContent = dailyGallons;
-		yearly.textContent = yearlyGallons;
-		adjustedYearly.textContent = yearlyAdjusted;
-		earthsNeeded.textContent = earths;
-		
-		event.preventDefault();
-		return false;
-	});
+	showerResult.textContent = showerGallons;
+	brushResult.textContent = brushGallons;
+	flushResult.textContent = flushGallons;
+	
+	var dailyGallons = showerGallons + brushGallons + flushGallons;
+	var yearlyGallons = Math.round(36.5 * dailyGallons)*0.01;
+	var yearlyAjdusted = Math.round(365 * dailyGallons)*0.01;
+	var earths = Math.round(yearlyAdjusted * 7 / 23.8) * 0.1;
+	
+	daily.textContent = dailyGallons;
+	yearly.textContent = yearlyGallons;
+	adjustedYearly.textContent = yearlyAdjusted;
+	earthsNeeded.textContent = earths;
+	
+	e.preventDefault();
+	return false;
+}
+form.addEventListener("submit", handleForm(event));
 </script>
 
 
