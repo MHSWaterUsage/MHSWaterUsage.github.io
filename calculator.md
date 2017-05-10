@@ -1,7 +1,7 @@
 # Water Usage Calculator
 Here's a nifty tool to let you figure out how much water you use in a day:
 <hr>
-<form id="calc" method="post">
+<form id="calc" onsubmit="handleFormNoEvent()">
 	How long do you generally shower for? <input type="number" name="shower"> Minutes<br>
 	Do you leave the water on while you brush your teeth?
 	<select name="brush">
@@ -69,7 +69,38 @@ function handleForm(e) {
 	}
 	return false;
 }
-form.addEventListener("submit", handleForm(event));
+//form.addEventListener("submit", handleForm(event));
+function handleFormNoEvent {
+	if(debug) {
+		alert("submitted!");
+	}
+	var showerGallons = form.elements.shower.value * 2.1;
+	var brushGallons = 0;
+	if(form.elements.brush.value == "y") {
+		brushGallons = 2.5;
+	}
+	var galPerFlush = 3.5;
+	if(form.elements.toiletAge.value == "y") {
+		galPerFlush = 1.6;
+	}
+	var flushGallons = galPerFlush * form.elements.flush.value;
+	
+	showerResult.textContent = showerGallons;
+	brushResult.textContent = brushGallons;
+	flushResult.textContent = flushGallons;
+	
+	var dailyGallons = showerGallons + brushGallons + flushGallons;
+	var yearlyGallons = Math.round(36.5 * dailyGallons)*0.01;
+	var yearlyAjdusted = Math.round(365 * dailyGallons)*0.01;
+	var earths = Math.round(yearlyAdjusted * 7 / 23.8) * 0.1;
+	
+	daily.textContent = dailyGallons;
+	yearly.textContent = yearlyGallons;
+	adjustedYearly.textContent = yearlyAdjusted;
+	earthsNeeded.textContent = earths;
+	
+	return false;
+}
 </script>
 
 
