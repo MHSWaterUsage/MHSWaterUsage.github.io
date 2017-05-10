@@ -32,7 +32,7 @@ The above calculations are for what is called domestic water use. This may seem 
 	var daily = document.getElementById("daily");
 	var yearly = document.getElementById("yearly");
 	var adjustedYearly = document.getElementById("adjustedYearly");
-	var worldsNeeded = document.getElementById(worldsNeeded");
+	var worldsNeeded = document.getElementById("worldsNeeded");
 	form.addEventListener("submit", function(event) {
 		var showerGallons = form.elements.shower.value * 2.1;
 		var brushGallons = 0;
