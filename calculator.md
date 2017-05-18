@@ -1,7 +1,7 @@
 # Water Usage Calculator
 Here's a nifty tool to let you figure out how much water you use in a day:
 <hr>
-<form id="calc" onsubmit="handleFormNoEvent()">
+<form id="calc">
 	How long do you generally shower for? <input type="number" name="shower"> Minutes<br>
 	Do you leave the water on while you brush your teeth?
 	<select name="brush">
@@ -14,7 +14,7 @@ Here's a nifty tool to let you figure out how much water you use in a day:
 		<option value="y">Yes</option>
 		<option value="n">No</option>
 	</select><br>
-	<button type="submit">Calculate!</button>
+	<button id="submit">Calculate!</button>
 </form>
 <hr>
 <p>
@@ -25,6 +25,7 @@ The above calculations are for what is called domestic water use. This may seem 
 </p>
 <script>
 var form = document.getElementById("calc");
+var sub = document.getElementById("submit");
 var debug = true;
 
 var showerResult = document.getElementById("showerResult");
@@ -34,43 +35,8 @@ var daily = document.getElementById("daily");
 var yearly = document.getElementById("yearly");
 var adjustedYearly = document.getElementById("adjustedYearly");
 var worldsNeeded = document.getElementById("worldsNeeded");
-/*function handleForm(e) {
-	if(debug) {
-		alert("submitted!");
-	}
-	var showerGallons = form.elements.shower.value * 2.1;
-	var brushGallons = 0;
-	if(form.elements.brush.value == "y") {
-		brushGallons = 2.5;
-	}
-	var galPerFlush = 3.5;
-	if(form.elements.toiletAge.value == "y") {
-		galPerFlush = 1.6;
-	}
-	var flushGallons = galPerFlush * form.elements.flush.value;
-	
-	showerResult.textContent = showerGallons;
-	brushResult.textContent = brushGallons;
-	flushResult.textContent = flushGallons;
-	
-	var dailyGallons = showerGallons + brushGallons + flushGallons;
-	var yearlyGallons = Math.round(36.5 * dailyGallons)*0.01;
-	var yearlyAjdusted = Math.round(365 * dailyGallons)*0.01;
-	var earths = Math.round(yearlyAdjusted * 7 / 23.8) * 0.1;
-	
-	daily.textContent = dailyGallons;
-	yearly.textContent = yearlyGallons;
-	adjustedYearly.textContent = yearlyAdjusted;
-	earthsNeeded.textContent = earths;
-	
-	e.preventDefault();
-	if(debug && e.isDefaultPrevented()) {
-		alert("sucess");
-	}
-	return false;
-}
-form.addEventListener("submit", handleForm(event));*/
-function handleFormNoEvent {
+
+function handleFormNoEvent() {
 	if(debug) {
 		alert("submitted!");
 	}
@@ -101,6 +67,8 @@ function handleFormNoEvent {
 	
 	return false;
 }
+
+sub.addEventListener("click", handleFormNoEvent);
 </script>
 
 
