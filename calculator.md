@@ -15,6 +15,7 @@ Here's a nifty tool to let you figure out how much water you use in a day:
 		<option value="n">No</option>
 	</select><br>
 	<button id="submit">Calculate!</button>
+	
 </form>
 <hr>
 <p>
@@ -65,7 +66,7 @@ function handleFormNoEvent() {
 	adjustedYearly.textContent = yearlyAdjusted;
 	earthsNeeded.textContent = earths;
 	
-	return false;
+	//return false;
 }
 
 sub.addEventListener("click", handleFormNoEvent);
