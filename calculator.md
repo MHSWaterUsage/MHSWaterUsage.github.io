@@ -56,7 +56,7 @@ function handleFormNoEvent() {
 	brushResult.textContent = brushGallons;
 	flushResult.textContent = flushGallons;
 	
-	var dailyGallons = showerGallons + brushGallons + flushGallons;
+	var dailyGallons = +(showerGallons + brushGallons + flushGallons).toFixed(2);
 	var yearlyGallons = +(.356 * dailyGallons).toFixed(2);
 	var yearlyAdjusted = +(3.56 * dailyGallons).toFixed(2);
 	var earths = Math.round(yearlyAdjusted * 7 / 23.8) / 10;
