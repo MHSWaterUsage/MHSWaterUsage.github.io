@@ -42,7 +42,7 @@ function handleFormNoEvent() {
 		alert("submitted!");
 	}
 	var showerGallons = form.elements.shower.value * 2.1;
-	var brushGallons = 0;
+	var brushGallons = 0.2;
 	if(form.elements.brush.value == "y") {
 		brushGallons = 2.5;
 	}
@@ -57,8 +57,8 @@ function handleFormNoEvent() {
 	flushResult.textContent = flushGallons;
 	
 	var dailyGallons = showerGallons + brushGallons + flushGallons;
-	var yearlyGallons = Math.round(36.5 * dailyGallons)*0.01;
-	var yearlyAjdusted = Math.round(365 * dailyGallons)*0.01;
+	var yearlyGallons = Math.round(36.5 * dailyGallons) * 0.01;
+	var yearlyAdjusted = Math.round(365 * dailyGallons) * 0.01;
 	var earths = Math.round(yearlyAdjusted * 7 / 23.8) * 0.1;
 	
 	daily.textContent = dailyGallons;
