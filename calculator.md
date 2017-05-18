@@ -41,7 +41,7 @@ function handleFormNoEvent() {
 	if(debug) {
 		alert("submitted!");
 	}
-	var showerGallons = form.elements.shower.value * 2.1;
+	var showerGallons = +(form.elements.shower.value * 2.1).toFixed(2);
 	var brushGallons = 0.2;
 	if(form.elements.brush.value == "y") {
 		brushGallons = 2.5;
@@ -50,21 +50,22 @@ function handleFormNoEvent() {
 	if(form.elements.toiletAge.value == "y") {
 		galPerFlush = 1.6;
 	}
-	var flushGallons = galPerFlush * form.elements.flush.value;
+	var flushGallons = +(galPerFlush * form.elements.flush.value).toFixed(2);
 	
 	showerResult.textContent = showerGallons;
 	brushResult.textContent = brushGallons;
 	flushResult.textContent = flushGallons;
 	
 	var dailyGallons = showerGallons + brushGallons + flushGallons;
-	var yearlyGallons = Math.round(36.5 * dailyGallons) * 0.01;
-	var yearlyAdjusted = Math.round(365 * dailyGallons) * 0.01;
-	var earths = Math.round(yearlyAdjusted * 7 / 23.8) * 0.1;
+	var yearlyGallons = +(.356 * dailyGallons).toFixed(2);
+	var yearlyAdjusted = +(3.56 * dailyGallons).toFixed(2);
+	var earths = Math.round(yearlyAdjusted * 7 / 23.8) / 10;
+	var earths = +(yearlyAdjusted * 7 / 238).toFixed(1);
 	
 	daily.textContent = dailyGallons;
 	yearly.textContent = yearlyGallons;
 	adjustedYearly.textContent = yearlyAdjusted;
-	earthsNeeded.textContent = earths;
+	worldsNeeded.textContent = earths;
 	
 	//return false;
 }
