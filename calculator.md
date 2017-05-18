@@ -14,8 +14,7 @@ Here's a nifty tool to let you figure out how much water you use in a day:
 		<option value="y">Yes</option>
 		<option value="n">No</option>
 	</select><br>
-	<button id="return">Calculate!</button>
-	<button type="submit" disabled>Ignore Me</button>
+	<button type="button" onclick="handleFormNoEvent()">Calculate!</button>
 	
 </form>
 <hr>
@@ -27,7 +26,7 @@ The above calculations are for what is called domestic water use. This may seem 
 </p>
 <script>
 var form = document.getElementById("calc");
-var sub = document.getElementById("return");
+//var sub = document.getElementById("return");
 var debug = true;
 
 var showerResult = document.getElementById("showerResult");
@@ -70,7 +69,7 @@ function handleFormNoEvent() {
 	//return false;
 }
 
-sub.addEventListener("click", handleFormNoEvent);
+//sub.addEventListener("click", handleFormNoEvent);
 </script>
 
 
